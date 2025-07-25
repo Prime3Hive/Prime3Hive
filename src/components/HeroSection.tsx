@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function HeroSection() {
   return (
@@ -40,9 +41,11 @@ export function HeroSection() {
               Start Your Project
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-            <Button variant="ghost" size="lg" className="border border-primary/30 hover:bg-primary/10">
-              View Our Work
-            </Button>
+            <Link to="/projects">
+              <Button variant="ghost" size="lg" className="border border-primary/30 hover:bg-primary/10">
+                View Our Work
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
