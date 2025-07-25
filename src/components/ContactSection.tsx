@@ -7,7 +7,7 @@ export function ContactSection() {
     {
       icon: Mail,
       title: "Email Us",
-      info: "hello@primehive.com",
+      info: "primehivedigitalsolutions@gmail.com",
       description: "Send us a message anytime"
     },
     {

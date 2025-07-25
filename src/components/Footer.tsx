@@ -3,9 +3,9 @@ import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 export function Footer() {
   const socialLinks = [
     { icon: Github, href: "#", label: "GitHub" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Mail, href: "#", label: "Email" }
+    { icon: Twitter, href: "https://twitter.com/Primehivesolu", label: "Twitter" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/primehive-digital-solutions-27b323355", label: "LinkedIn" },
+    { icon: Mail, href: "mailto:primehivedigitalsolutions@gmail.com", label: "Email" }
   ];
 
   const footerLinks = [
