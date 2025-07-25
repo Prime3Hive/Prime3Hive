@@ -4,9 +4,11 @@ import { supabase } from '@/lib/supabase';
 import { useToast } from '@/hooks/use-toast';
 
 export function useAuth() {
+  console.log('useAuth: Hook called');
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  console.log('useAuth: State initialized', { user, loading });
 
   useEffect(() => {
     // Get initial session
