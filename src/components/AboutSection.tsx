@@ -13,25 +13,26 @@ export function AboutSection() {
   const values = [
     {
       title: 'Innovation First',
-      description: 'We stay ahead of the curve with cutting-edge technologies and methodologies.'
+      description: 'Leveraging cutting-edge technologies like AI, cloud computing, and modern development frameworks.'
     },
     {
-      title: 'Client Success',
-      description: 'Your success is our success. We work as partners to achieve your goals.'
+      title: 'Scalable Architecture',
+      description: 'Building robust, enterprise-grade solutions that grow with your business needs.'
     },
     {
-      title: 'Quality Delivery',
-      description: 'We maintain the highest standards in everything we create and deliver.'
+      title: 'Security by Design',
+      description: 'Implementing industry-leading security practices and compliance standards from day one.'
     },
     {
-      title: 'Transparent Process',
-      description: 'Clear communication and regular updates throughout every project.'
+      title: 'Performance Driven',
+      description: 'Optimizing every aspect for speed, efficiency, and exceptional user experiences.'
     }
   ];
 
   const technologies = [
     'React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker', 'Kubernetes',
-    'PostgreSQL', 'MongoDB', 'GraphQL', 'REST APIs', 'Figma', 'Tailwind CSS'
+    'PostgreSQL', 'MongoDB', 'GraphQL', 'REST APIs', 'TensorFlow', 'Machine Learning',
+    'Microservices', 'CI/CD', 'DevOps', 'Figma', 'Tailwind CSS'
   ];
 
   return (
@@ -43,9 +44,9 @@ export function AboutSection() {
             <span className="text-sm font-medium text-primary">About Us</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold">
-            Empowering Businesses Through{' '}
-            <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">
-              Digital Innovation
+            Engineering Excellence Through{' '}
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Innovation
             </span>
           </h2>
         </div>
@@ -56,14 +57,14 @@ export function AboutSection() {
             <div className="space-y-6">
               <h3 className="text-3xl font-bold">Who We Are</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                PrimeHive Digital Solutions is a forward-thinking technology company dedicated 
-                to transforming businesses through innovative digital solutions. We combine 
-                technical expertise with creative problem-solving to deliver exceptional results.
+                PrimeHive Digital Solutions is a cutting-edge technology company specializing in 
+                enterprise-grade software development, cloud architecture, and AI-powered solutions. 
+                We combine deep technical expertise with innovative problem-solving methodologies.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Our team of passionate developers, designers, and strategists work collaboratively 
-                to bring your vision to life, ensuring every project exceeds expectations and 
-                drives meaningful business growth.
+                Our team of senior engineers, cloud architects, and AI specialists work with the latest 
+                technologies to deliver scalable, secure, and high-performance solutions that transform 
+                how businesses operate in the digital age.
               </p>
             </div>
 
@@ -71,11 +72,12 @@ export function AboutSection() {
               <h4 className="text-xl font-semibold">Why Choose PrimeHive?</h4>
               <div className="grid gap-3">
                 {[
-                  'Expert team with 5+ years of experience',
-                  'Proven track record of successful projects',
-                  'End-to-end development and support',
-                  'Agile methodology and transparent communication',
-                  'Competitive pricing and flexible engagement models'
+                  'Senior-level engineering team with 7+ years experience',
+                  'Enterprise-grade security and compliance standards',
+                  'Cloud-native architecture and microservices expertise',
+                  'Agile development with DevOps automation',
+                  'AI/ML integration and data analytics capabilities',
+                  '24/7 technical support and monitoring'
                 ].map((item) => (
                   <div key={item} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
@@ -91,11 +93,11 @@ export function AboutSection() {
             {stats.map((stat) => {
               const Icon = stat.icon;
               return (
-                <Card key={stat.label} className="card-gradient p-6 text-center group hover:shadow-medium transition-all duration-300">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <Card key={stat.label} className="card-gradient p-6 text-center group hover:shadow-tech transition-all duration-500 hover:-translate-y-1 border border-primary/10">
+                  <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-glow transition-all duration-500">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <div className="text-3xl font-bold text-foreground mb-2">{stat.value}</div>
+                  <div className="text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{stat.value}</div>
                   <div className="text-muted-foreground">{stat.label}</div>
                 </Card>
               );

@@ -6,31 +6,35 @@ export function ServicesSection() {
   const services = [
     {
       title: 'Web Development',
-      description: 'Custom web applications tailored to your needs with modern frameworks and responsive design.',
+      description: 'Next-generation web applications built with React, TypeScript, and modern frameworks for scalable performance.',
       icon: Code,
-      features: ['React & Next.js', 'Responsive Design', 'Performance Optimization', 'SEO Friendly'],
-      color: 'from-blue-500 to-blue-600'
+      features: ['React & Next.js', 'TypeScript', 'Microservices', 'Progressive Web Apps'],
+      color: 'from-blue-500 to-blue-600',
+      gradient: 'from-primary to-primary-hover'
     },
     {
       title: 'Mobile Development',
-      description: 'Native and cross-platform mobile applications that deliver exceptional user experiences.',
+      description: 'Cross-platform mobile solutions with React Native and Flutter, delivering native performance across all devices.',
       icon: Smartphone,
-      features: ['iOS & Android', 'React Native', 'Native Performance', 'App Store Optimization'],
-      color: 'from-green-500 to-green-600'
+      features: ['React Native', 'Flutter', 'Native iOS/Android', 'Cross-Platform'],
+      color: 'from-green-500 to-green-600',
+      gradient: 'from-accent to-cyan-500'
     },
     {
       title: 'Cloud Solutions',
-      description: 'Scalable cloud infrastructure and deployment solutions for modern applications.',
+      description: 'Enterprise-grade cloud infrastructure with AWS, Azure, and containerized deployment for unlimited scalability.',
       icon: Cloud,
-      features: ['AWS & Azure', 'Docker & Kubernetes', 'CI/CD Pipelines', 'Auto Scaling'],
-      color: 'from-purple-500 to-purple-600'
+      features: ['AWS & Azure', 'Kubernetes', 'Docker', 'DevOps Automation'],
+      color: 'from-purple-500 to-purple-600',
+      gradient: 'from-purple-500 to-violet-600'
     },
     {
-      title: 'UI/UX Design',
-      description: 'Beautiful and intuitive user interfaces that enhance user engagement and satisfaction.',
+      title: 'AI & Machine Learning',
+      description: 'Intelligent automation and AI-powered solutions that transform data into actionable business insights.',
       icon: Palette,
-      features: ['User Research', 'Prototyping', 'Design Systems', 'Usability Testing'],
-      color: 'from-orange-500 to-orange-600'
+      features: ['Machine Learning', 'Data Analytics', 'AI Automation', 'Predictive Models'],
+      color: 'from-orange-500 to-orange-600',
+      gradient: 'from-orange-500 to-red-500'
     }
   ];
 
@@ -43,14 +47,14 @@ export function ServicesSection() {
             <span className="text-sm font-medium text-primary">Our Services</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold">
-            Comprehensive Digital{' '}
-            <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">
-              Solutions
+            Advanced Technology{' '}
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Services
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From concept to deployment, we provide end-to-end digital solutions 
-            that drive growth and innovation for your business.
+            Leverage cutting-edge technologies and proven methodologies to build scalable, 
+            high-performance solutions that drive your business forward.
           </p>
         </div>
 
@@ -61,16 +65,17 @@ export function ServicesSection() {
             return (
               <Card 
                 key={service.title} 
-                className="card-gradient p-8 relative overflow-hidden group hover:shadow-large transition-all duration-300 hover:-translate-y-2"
+                className="card-gradient p-8 relative overflow-hidden group hover:shadow-tech transition-all duration-500 hover:-translate-y-2 border border-primary/10"
               >
-                {/* Background Pattern */}
+                {/* Tech Background Pattern */}
                 <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-                  <div className="w-full h-full bg-gradient-to-br from-primary to-accent rounded-full transform translate-x-16 -translate-y-16" />
+                  <div className={`w-full h-full bg-gradient-to-br ${service.gradient} rounded-full transform translate-x-16 -translate-y-16`} />
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative z-10">
-                  {/* Icon */}
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  {/* Tech Icon */}
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-glow transition-all duration-500`}>
                     <Icon className="w-8 h-8 text-white" />
                   </div>
 

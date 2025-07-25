@@ -19,15 +19,15 @@ export function Navbar({ isAuthenticated = false, onSignOut }: NavbarProps) {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-lg border-b border-primary/10 shadow-tech">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+          <div className="flex items-center space-x-2 group">
+            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-300">
               <Code className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-foreground">PrimeHive</span>
+            <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">PrimeHive</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -36,9 +36,10 @@ export function Navbar({ isAuthenticated = false, onSignOut }: NavbarProps) {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-tech group-hover:w-full transition-all duration-300" />
               </a>
             ))}
           </div>
@@ -46,13 +47,13 @@ export function Navbar({ isAuthenticated = false, onSignOut }: NavbarProps) {
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
-              <Button variant="outline" onClick={onSignOut}>
+              <Button variant="outline" onClick={onSignOut} className="border-primary/20 hover:bg-primary/10">
                 Sign Out
               </Button>
             ) : (
               <>
-                <Button variant="ghost">Sign In</Button>
-                <Button>Get Started</Button>
+                <Button variant="ghost" className="hover:text-primary hover:bg-primary/10">Sign In</Button>
+                <Button className="bg-gradient-primary hover:shadow-glow transition-all duration-300">Get Started</Button>
               </>
             )}
           </div>

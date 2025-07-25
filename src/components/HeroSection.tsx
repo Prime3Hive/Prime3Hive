@@ -5,12 +5,23 @@ import { ArrowRight, Play, ChevronDown } from 'lucide-react';
 export function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 hero-gradient opacity-90" />
+      {/* Advanced Background Effects */}
+      <div className="absolute inset-0 hero-gradient" />
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-primary/20 to-accent/10 rounded-full blur-3xl animate-pulse-tech" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-accent/20 to-primary/10 rounded-full blur-3xl animate-float-tech" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
+        
+        {/* Tech Grid Pattern */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(hsl(220 91% 54% / 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, hsl(220 91% 54% / 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -18,52 +29,52 @@ export function HeroSection() {
           {/* Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                <span className="text-sm font-medium text-white">✨ Transform Your Business</span>
+              <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 tech-glow">
+                <span className="text-sm font-medium text-white">✨ Next-Gen Technology</span>
               </div>
               
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-                Smart Solutions for{' '}
-                <span className="bg-gradient-to-r from-white to-accent-foreground bg-clip-text text-transparent">
-                  Modern Business
+                Transform Your Business with{' '}
+                <span className="bg-gradient-to-r from-white via-accent-foreground to-white bg-clip-text text-transparent animate-pulse-tech">
+                  Cutting-Edge Solutions
                 </span>
               </h1>
               
-              <p className="text-xl text-white/80 leading-relaxed max-w-xl">
-                We help businesses optimize their operations through innovative software solutions 
-                and expert consulting services.
+              <p className="text-xl text-white/90 leading-relaxed max-w-xl">
+                Empowering businesses with innovative software solutions, cloud infrastructure, 
+                and cutting-edge development practices that drive digital transformation.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="bg-white text-primary hover:bg-white/90 shadow-large group"
+                className="bg-white text-primary hover:bg-white/90 shadow-glow group transition-tech font-semibold"
               >
-                Get Started
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Start Your Project
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
               
               <Button 
                 size="lg" 
-                variant="outline" 
-                className="glass-effect text-white border-white/20 hover:bg-white/10"
+                variant="glass" 
+                className="text-white border-white/30 hover:bg-white/20 hover:border-white/50 transition-tech"
               >
                 <Play className="mr-2 w-5 h-5" />
-                Watch Demo
+                View Demo
               </Button>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               {[
-                { number: '100+', label: 'Projects Completed' },
-                { number: '50+', label: 'Happy Clients' },
-                { number: '5+', label: 'Years Experience' }
+                { number: '200+', label: 'Projects Delivered' },
+                { number: '98%', label: 'Client Satisfaction' },
+                { number: '24/7', label: 'Technical Support' }
               ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-3xl font-bold text-white">{stat.number}</div>
-                  <div className="text-white/60 text-sm">{stat.label}</div>
+                <div key={stat.label} className="text-center group">
+                  <div className="text-3xl font-bold text-white group-hover:text-accent transition-tech">{stat.number}</div>
+                  <div className="text-white/70 text-sm">{stat.label}</div>
                 </div>
               ))}
             </div>

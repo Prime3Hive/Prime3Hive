@@ -58,16 +58,24 @@ export default {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-hero': 'var(--gradient-hero)',
 				'gradient-card': 'var(--gradient-card)',
-				'gradient-overlay': 'var(--gradient-overlay)'
+				'gradient-overlay': 'var(--gradient-overlay)',
+				'gradient-tech': 'var(--gradient-tech)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',
 				'medium': 'var(--shadow-medium)',
-				'large': 'var(--shadow-large)'
+				'large': 'var(--shadow-large)',
+				'glow': 'var(--shadow-glow)',
+				'tech': 'var(--shadow-tech)'
+			},
+			animation: {
+				'pulse-tech': 'pulse-tech 3s ease-in-out infinite',
+				'float-tech': 'float-tech 6s ease-in-out infinite'
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)',
-				'spring': 'var(--transition-spring)'
+				'spring': 'var(--transition-spring)',
+				'tech': 'var(--transition-tech)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
