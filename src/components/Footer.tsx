@@ -1,10 +1,11 @@
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Github, Twitter, Linkedin, Mail, MessageCircle } from 'lucide-react';
 
 export function Footer() {
   const socialLinks = [
     { icon: Github, href: "#", label: "GitHub" },
     { icon: Twitter, href: "https://twitter.com/Primehivesolu", label: "Twitter" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/primehive-digital-solutions-27b323355", label: "LinkedIn" },
+    { icon: MessageCircle, href: "https://wa.me/qr/FXLQ3CFIYG52B1", label: "WhatsApp" },
     { icon: Mail, href: "mailto:primehivedigitalsolutions@gmail.com", label: "Email" }
   ];
 
