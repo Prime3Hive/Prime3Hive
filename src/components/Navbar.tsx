@@ -21,7 +21,8 @@ export function Navbar() {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-foreground/80 hover:text-primary transition-colors">Home</a>
+            <a href="/" className="text-foreground/80 hover:text-primary transition-colors">Home</a>
+            <a href="/projects" className="text-foreground/80 hover:text-primary transition-colors">Projects</a>
             <a href="#services" className="text-foreground/80 hover:text-primary transition-colors">Services</a>
             <a href="#about" className="text-foreground/80 hover:text-primary transition-colors">About</a>
             <a href="#contact" className="text-foreground/80 hover:text-primary transition-colors">Contact</a>
@@ -47,7 +48,8 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 glass-effect border-b border-primary/20">
             <div className="flex flex-col space-y-4 p-6">
-              <a href="#home" className="text-foreground/80 hover:text-primary transition-colors">Home</a>
+              <a href="/" className="text-foreground/80 hover:text-primary transition-colors">Home</a>
+              <a href="/projects" className="text-foreground/80 hover:text-primary transition-colors">Projects</a>
               <a href="#services" className="text-foreground/80 hover:text-primary transition-colors">Services</a>
               <a href="#about" className="text-foreground/80 hover:text-primary transition-colors">About</a>
               <a href="#contact" className="text-foreground/80 hover:text-primary transition-colors">Contact</a>
