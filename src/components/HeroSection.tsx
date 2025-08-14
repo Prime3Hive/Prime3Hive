@@ -36,11 +36,13 @@ export function HeroSection() {
           
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all duration-300 neon-glow">
-              <Zap className="w-5 h-5 mr-2" />
-              Start Your Project
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link to="/contact">
+              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all duration-300 neon-glow">
+                <Zap className="w-5 h-5 mr-2" />
+                Start Your Project
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
             <Link to="/projects">
               <Button variant="ghost" size="lg" className="border border-primary/30 hover:bg-primary/10">
                 View Our Work
