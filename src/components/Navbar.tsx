@@ -47,10 +47,12 @@ export function Navbar() {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <span className="text-background font-bold text-sm">P</span>
-            </div>
+          <div className="flex items-center gap-3">
+            <img 
+              src="/lovable-uploads/ac704901-333a-4f62-98d4-62ea1c19621f.png" 
+              alt="PrimeHive Digital Solutions"
+              className="w-10 h-10 object-contain"
+            />
             <span className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               PrimeHive
             </span>
