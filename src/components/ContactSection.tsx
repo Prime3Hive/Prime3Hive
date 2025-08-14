@@ -81,7 +81,12 @@ export function ContactSection() {
                   Start Your Project
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button variant="ghost" size="lg" className="border border-primary/30 hover:bg-primary/10">
+                <Button 
+                  variant="ghost" 
+                  size="lg" 
+                  className="border border-primary/30 hover:bg-primary/10"
+                  onClick={() => window.open('https://calendly.com/primehivedigitalsolutions', '_blank')}
+                >
                   Schedule a Call
                 </Button>
               </div>
