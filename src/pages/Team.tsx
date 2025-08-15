@@ -15,7 +15,7 @@ const Team = () => {
       social: {
         linkedin: "https://www.linkedin.com/in/ibitomi-theophilus/",
         twitter: "https://x.com/BiochemIbitz",
-        github: "#"
+        github: "https://github.com/BiochemIbitz"
       }
     }
   ];
