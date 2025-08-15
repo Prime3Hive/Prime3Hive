@@ -26,11 +26,17 @@ export function Navbar() {
   });
 
   const handleNavClick = (sectionId: string, href?: string) => {
+    setIsOpen(false);
+    
     if (href && href.startsWith('/')) {
       window.location.href = href;
     } else if (sectionId) {
-      scrollToSection(sectionId);
-      setIsOpen(false);
+      // If we're not on the home page, navigate to home first
+      if (window.location.pathname !== '/') {
+        window.location.href = `/#${sectionId}`;
+      } else {
+        scrollToSection(sectionId);
+      }
     }
   };
 
@@ -93,7 +99,7 @@ export function Navbar() {
               About
             </motion.button>
             <motion.button 
-              onClick={() => handleNavClick('contact')} 
+              onClick={() => handleNavClick('', '/contact')} 
               className="text-foreground/80 hover:text-primary transition-colors relative"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -107,7 +113,7 @@ export function Navbar() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
                 className="bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all neon-glow"
-                onClick={() => handleNavClick('contact')}
+                onClick={() => handleNavClick('', '/contact')}
               >
                 Get Started
               </Button>
@@ -168,7 +174,7 @@ export function Navbar() {
                   About
                 </motion.button>
                 <motion.button 
-                  onClick={() => handleNavClick('contact')} 
+                  onClick={() => handleNavClick('', '/contact')} 
                   className="text-foreground/80 hover:text-primary transition-colors text-left"
                   whileTap={{ scale: 0.95 }}
                 >
@@ -177,7 +183,7 @@ export function Navbar() {
                 <motion.div whileTap={{ scale: 0.95 }}>
                   <Button 
                     className="bg-gradient-to-r from-primary to-accent mt-4 w-full"
-                    onClick={() => handleNavClick('contact')}
+                    onClick={() => handleNavClick('', '/contact')}
                   >
                     Get Started
                   </Button>
