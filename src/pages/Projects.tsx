@@ -44,7 +44,7 @@ const projects = [
     title: "Investment Portfolio Platform",
     description: "Modern investment website with portfolio tracking, market analysis, and automated trading capabilities. Features advanced charting, risk assessment, and personalized investment recommendations.",
     category: "FinTech Platform",
-    technologies: ["Next.js", "TypeScript", "MongoDB", "Python", "TradingView API"],
+    technologies: ["Supabase", "TypeScript", "Node.js", "Python"],
     features: [
       "Portfolio performance tracking",
       "Real-time market data",
@@ -52,11 +52,11 @@ const projects = [
       "Automated rebalancing",
       "Educational resources hub"
     ],
-    timeline: "4 months",
-    team: "6 developers",
+    timeline: "1 month and 2 weeks",
+    team: "1 developer",
     impact: "500+ active investors, $2M+ assets under management",
     status: "Completed",
-    year: "2024"
+    year: "2025"
   }
 ];
 
