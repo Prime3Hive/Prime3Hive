@@ -83,7 +83,7 @@ export function Navbar() {
               Projects
             </motion.button>
             <motion.button 
-              onClick={() => handleNavClick('services')} 
+              onClick={() => handleNavClick('', '/services')} 
               className="text-foreground/80 hover:text-primary transition-colors relative"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -160,7 +160,7 @@ export function Navbar() {
                   Projects
                 </motion.button>
                 <motion.button 
-                  onClick={() => handleNavClick('services')} 
+                  onClick={() => handleNavClick('', '/services')} 
                   className="text-foreground/80 hover:text-primary transition-colors text-left"
                   whileTap={{ scale: 0.95 }}
                 >
