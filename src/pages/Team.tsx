@@ -13,8 +13,8 @@ const Team = () => {
       image: null, // Placeholder for headshot image
       skills: ["AI Engineering", "Python", "Machine Learning", "Leadership"],
       social: {
-        linkedin: "#",
-        twitter: "#",
+        linkedin: "https://www.linkedin.com/in/ibitomi-theophilus/",
+        twitter: "https://x.com/BiochemIbitz",
         github: "#"
       }
     }
