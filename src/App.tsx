@@ -8,6 +8,11 @@ import Projects from "./pages/Projects";
 import Admin from "./pages/Admin";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
+import Team from "./pages/Team";
+import Careers from "./pages/Careers"; 
+import Blog from "./pages/Blog";
+import Documentation from "./pages/Documentation";
+import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
 import WebDevelopment from "./pages/services/WebDevelopment";
 import UIUXDesign from "./pages/services/UIUXDesign";
@@ -32,6 +37,11 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/documentation" element={<Documentation />} />
+            <Route path="/support" element={<Support />} />
             <Route path="/admin" element={<Admin />} />
           <Route path="/services/web-development" element={<WebDevelopment />} />
           <Route path="/services/ui-ux-design" element={<UIUXDesign />} />

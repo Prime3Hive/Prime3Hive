@@ -10,9 +10,33 @@ export function Footer() {
   ];
 
   const footerLinks = [
-    { title: "Services", links: ["Web Development", "UI/UX Design", "Performance", "Security"] },
-    { title: "Company", links: ["About Us", "Our Team", "Careers", "Contact"] },
-    { title: "Resources", links: ["Blog", "Case Studies", "Documentation", "Support"] }
+    { 
+      title: "Services", 
+      links: [
+        { name: "Web Development", href: "/services/web-development" },
+        { name: "UI/UX Design", href: "/services/ui-ux-design" },
+        { name: "Performance", href: "/services/performance-optimization" },
+        { name: "Security", href: "/services/security-solutions" }
+      ]
+    },
+    { 
+      title: "Company", 
+      links: [
+        { name: "About Us", href: "/#about" },
+        { name: "Our Team", href: "/team" },
+        { name: "Careers", href: "/careers" },
+        { name: "Contact", href: "/contact" }
+      ]
+    },
+    { 
+      title: "Resources", 
+      links: [
+        { name: "Blog", href: "/blog" },
+        { name: "Case Studies", href: "/projects" },
+        { name: "Documentation", href: "/documentation" },
+        { name: "Support", href: "/support" }
+      ]
+    }
   ];
 
   return (
@@ -55,10 +79,10 @@ export function Footer() {
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <a 
-                      href="#" 
+                      href={link.href} 
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      {link}
+                      {link.name}
                     </a>
                   </li>
                 ))}
