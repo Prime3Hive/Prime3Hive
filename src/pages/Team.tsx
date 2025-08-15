@@ -7,35 +7,11 @@ import { Github, Linkedin, Twitter } from 'lucide-react';
 const Team = () => {
   const teamMembers = [
     {
-      name: "John Smith",
+      name: "Ibitomi Theophius",
       role: "CEO & Founder",
-      bio: "Visionary leader with 10+ years in digital transformation and business strategy.",
-      image: "/placeholder.svg",
-      skills: ["Leadership", "Strategy", "Business Development"],
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
-      }
-    },
-    {
-      name: "Sarah Johnson",
-      role: "CTO & Co-Founder", 
-      bio: "Full-stack developer and tech architect passionate about scalable solutions.",
-      image: "/placeholder.svg",
-      skills: ["React", "Node.js", "AWS", "System Architecture"],
-      social: {
-        linkedin: "#",
-        twitter: "#", 
-        github: "#"
-      }
-    },
-    {
-      name: "Mike Chen",
-      role: "Lead Designer",
-      bio: "Creative designer focused on user experience and modern design principles.",
-      image: "/placeholder.svg",
-      skills: ["UI/UX", "Figma", "Design Systems", "User Research"],
+      bio: "AI engineer and Python developer passionate about building innovative digital solutions.",
+      image: null, // Placeholder for headshot image
+      skills: ["AI Engineering", "Python", "Machine Learning", "Leadership"],
       social: {
         linkedin: "#",
         twitter: "#",
@@ -55,7 +31,7 @@ const Team = () => {
               Meet Our Team
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              The talented individuals behind PrimeHive's innovative digital solutions
+              The talented individuals behind PrimeHive's innovative digital solutions. More team members will be added soon.
             </p>
           </div>
 
@@ -64,11 +40,19 @@ const Team = () => {
               <Card key={index} className="group hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="text-center mb-4">
-                    <div className="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <span className="text-background font-bold text-2xl">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
+                    {member.image ? (
+                      <img 
+                        src={member.image} 
+                        alt={`${member.name} headshot`}
+                        className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-primary/20"
+                      />
+                    ) : (
+                      <div className="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-dashed border-primary/30">
+                        <span className="text-background font-bold text-2xl">
+                          {member.name.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                    )}
                     <h3 className="text-xl font-semibold text-foreground">{member.name}</h3>
                     <p className="text-primary font-medium">{member.role}</p>
                   </div>
