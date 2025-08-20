@@ -1,102 +1,173 @@
-import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mail, Phone, MapPin, Send, ArrowRight, MessageCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { AnimatedSection } from './AnimatedSection';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
-export function ContactSection() {
-  const contactMethods = [
-    {
-      icon: Mail,
-      title: "Email Us",
-      info: "primehivedigitalsolutions@gmail.com",
-      description: "Send us a message anytime"
-    },
-    {
-      icon: MessageCircle,
-      title: "WhatsApp",
-      info: "Chat with us",
-      description: "Quick response guaranteed"
-    },
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      info: "San Francisco, CA",
-      description: "Come say hello at our office"
+const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('contacts')
+        .insert([formData]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. We'll get back to you soon.",
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-  ];
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        {/* Background decoration */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
-        
-        <div className="max-w-4xl mx-auto">
-          {/* Section header */}
+        <AnimatedSection>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Ready to
-              <br />
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Start Your Project?
-              </span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Get In Touch
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Let's discuss your vision and bring it to life with our expertise and passion
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Ready to start your project? Send us a message and we'll get back to you within 24 hours.
             </p>
           </div>
-          
-          {/* Contact methods */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {contactMethods.map((method, index) => (
-              <a key={index} href={method.title === "WhatsApp" ? "https://wa.me/qr/FXLQ3CFIYG52B1" : method.title === "Email Us" ? "mailto:primehivedigitalsolutions@gmail.com" : "#"} target="_blank" rel="noopener noreferrer">
-                <Card className="floating-card text-center group cursor-pointer h-full">
-                <CardHeader>
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <method.icon className="w-8 h-8 text-primary" />
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <AnimatedSection delay={0.2}>
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-4">
+                    <Mail className="w-6 h-6 text-primary mt-1" />
+                    <div>
+                      <p className="font-semibold">Email</p>
+                      <p className="text-muted-foreground">primehivedigitalsolutions@gmail.com</p>
+                    </div>
                   </div>
-                  <CardTitle className="text-lg">{method.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-primary font-semibold mb-2">{method.info}</p>
-                  <p className="text-muted-foreground text-sm">{method.description}</p>
-                </CardContent>
-                </Card>
-              </a>
-            ))}
-          </div>
-          
-          {/* CTA */}
-          <div className="text-center">
-            <div className="glass-effect rounded-2xl p-8 md:p-12 border border-primary/20">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Let's Create Something Amazing Together
-              </h3>
-              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Whether you have a clear vision or just an idea, we're here to help you 
-                turn it into a digital masterpiece that exceeds expectations.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact">
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all neon-glow">
-                    <Send className="w-5 h-5 mr-2" />
-                    Start Your Project
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-                <Button 
-                  variant="ghost" 
-                  size="lg" 
-                  className="border border-primary/30 hover:bg-primary/10"
-                  onClick={() => window.open('https://calendly.com/primehivedigitalsolutions', '_blank')}
-                >
-                  Schedule a Call
-                </Button>
+                  <div className="flex items-start space-x-4">
+                    <Phone className="w-6 h-6 text-primary mt-1" />
+                    <div>
+                      <p className="font-semibold">Phone</p>
+                      <p className="text-muted-foreground">Available via WhatsApp</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <MapPin className="w-6 h-6 text-primary mt-1" />
+                    <div>
+                      <p className="font-semibold">Location</p>
+                      <p className="text-muted-foreground">San Francisco, CA</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.4}>
+            <Card>
+              <CardHeader>
+                <CardTitle>Send us a message</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <Input
+                      type="text"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="email"
+                      placeholder="Your Email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="text"
+                      placeholder="Subject"
+                      value={formData.subject}
+                      onChange={(e) => handleInputChange('subject', e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Textarea
+                      placeholder="Your Message"
+                      rows={5}
+                      value={formData.message}
+                      onChange={(e) => handleInputChange('message', e.target.value)}
+                      required
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full gap-2"
+                  >
+                    {isSubmitting ? (
+                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-background border-t-foreground" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export { ContactSection };

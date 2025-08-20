@@ -1,14 +1,17 @@
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 import { useSwipeable } from 'react-swipeable';
+import { useAuth } from '@/contexts/AuthContext';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { scrollToSection } = useSmoothScroll();
+  const { user, isAdmin, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -109,15 +112,44 @@ export function Navbar() {
           </div>
           
           {/* CTA Button */}
-          <div className="hidden md:flex">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button 
-                className="bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all neon-glow"
-                onClick={() => handleNavClick('', '/contact')}
-              >
-                Get Started
-              </Button>
-            </motion.div>
+          <div className="hidden md:flex items-center space-x-4">
+            {user ? (
+              <div className="flex items-center space-x-2">
+                {isAdmin && (
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button variant="outline" asChild>
+                      <Link to="/admin">Admin</Link>
+                    </Button>
+                  </motion.div>
+                )}
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button 
+                    variant="outline" 
+                    onClick={signOut}
+                    className="gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Sign Out
+                  </Button>
+                </motion.div>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button variant="outline" asChild>
+                    <Link to="/auth">Sign In</Link>
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button 
+                    className="bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all neon-glow"
+                    onClick={() => handleNavClick('', '/contact')}
+                  >
+                    Get Started
+                  </Button>
+                </motion.div>
+              </div>
+            )}
           </div>
           
           {/* Mobile menu button */}
@@ -180,14 +212,44 @@ export function Navbar() {
                 >
                   Contact
                 </motion.button>
-                <motion.div whileTap={{ scale: 0.95 }}>
-                  <Button 
-                    className="bg-gradient-to-r from-primary to-accent mt-4 w-full"
-                    onClick={() => handleNavClick('', '/contact')}
-                  >
-                    Get Started
-                  </Button>
-                </motion.div>
+
+                {user ? (
+                  <div className="space-y-2 pt-2 border-t border-border">
+                    {isAdmin && (
+                      <motion.div whileTap={{ scale: 0.95 }}>
+                        <Button variant="outline" className="w-full" asChild>
+                          <Link to="/admin">Admin Dashboard</Link>
+                        </Button>
+                      </motion.div>
+                    )}
+                    <motion.div whileTap={{ scale: 0.95 }}>
+                      <Button 
+                        variant="outline" 
+                        onClick={signOut}
+                        className="w-full gap-2"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Sign Out
+                      </Button>
+                    </motion.div>
+                  </div>
+                ) : (
+                  <div className="space-y-2 pt-2 border-t border-border">
+                    <motion.div whileTap={{ scale: 0.95 }}>
+                      <Button variant="outline" className="w-full" asChild>
+                        <Link to="/auth">Sign In</Link>
+                      </Button>
+                    </motion.div>
+                    <motion.div whileTap={{ scale: 0.95 }}>
+                      <Button 
+                        className="bg-gradient-to-r from-primary to-accent w-full"
+                        onClick={() => handleNavClick('', '/contact')}
+                      >
+                        Get Started
+                      </Button>
+                    </motion.div>
+                  </div>
+                )}
               </motion.div>
             </motion.div>
           )}
