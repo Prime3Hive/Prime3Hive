@@ -10,418 +10,188 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "12.2.3 (519615d)"
+    PostgrestVersion: "13.0.4"
   }
   public: {
     Tables: {
-      deposits: {
-        Row: {
-          admin_notes: string | null
-          amount: number
-          confirmation_hash: string | null
-          confirmed: boolean | null
-          created_at: string | null
-          id: string
-          method: string
-          processed_by: string | null
-          proof_url: string | null
-          status: string | null
-          transaction_id: string | null
-          updated_at: string | null
-          user_id: string
-        }
-        Insert: {
-          admin_notes?: string | null
-          amount: number
-          confirmation_hash?: string | null
-          confirmed?: boolean | null
-          created_at?: string | null
-          id?: string
-          method: string
-          processed_by?: string | null
-          proof_url?: string | null
-          status?: string | null
-          transaction_id?: string | null
-          updated_at?: string | null
-          user_id: string
-        }
-        Update: {
-          admin_notes?: string | null
-          amount?: number
-          confirmation_hash?: string | null
-          confirmed?: boolean | null
-          created_at?: string | null
-          id?: string
-          method?: string
-          processed_by?: string | null
-          proof_url?: string | null
-          status?: string | null
-          transaction_id?: string | null
-          updated_at?: string | null
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "deposits_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "user_profiles"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      investment_plans: {
-        Row: {
-          created_at: string | null
-          description: string | null
-          duration_hours: number
-          id: string
-          is_active: boolean | null
-          max_amount: number
-          min_amount: number
-          name: string
-          roi_percent: number
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          description?: string | null
-          duration_hours: number
-          id?: string
-          is_active?: boolean | null
-          max_amount: number
-          min_amount: number
-          name: string
-          roi_percent: number
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          description?: string | null
-          duration_hours?: number
-          id?: string
-          is_active?: boolean | null
-          max_amount?: number
-          min_amount?: number
-          name?: string
-          roi_percent?: number
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
-      investments: {
-        Row: {
-          amount: number
-          created_at: string | null
-          end_time: string
-          id: string
-          plan_id: string
-          roi: number
-          start_time: string
-          status: string | null
-          user_id: string
-        }
-        Insert: {
-          amount: number
-          created_at?: string | null
-          end_time: string
-          id?: string
-          plan_id: string
-          roi: number
-          start_time: string
-          status?: string | null
-          user_id: string
-        }
-        Update: {
-          amount?: number
-          created_at?: string | null
-          end_time?: string
-          id?: string
-          plan_id?: string
-          roi?: number
-          start_time?: string
-          status?: string | null
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "investments_plan_id_fkey"
-            columns: ["plan_id"]
-            isOneToOne: false
-            referencedRelation: "plans"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "investments_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "user_profiles"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      messages: {
-        Row: {
-          created_at: string | null
-          email: string | null
-          id: string
-          is_read: boolean | null
-          message: string
-          name: string | null
-          subject: string
-          user_id: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          email?: string | null
-          id?: string
-          is_read?: boolean | null
-          message: string
-          name?: string | null
-          subject: string
-          user_id?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          email?: string | null
-          id?: string
-          is_read?: boolean | null
-          message?: string
-          name?: string | null
-          subject?: string
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "messages_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "user_profiles"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      notifications: {
+      contacts: {
         Row: {
           created_at: string
+          email: string
           id: string
           message: string
-          read: boolean
-          title: string
-          type: string
-          user_id: string
+          name: string
+          status: string | null
+          subject: string | null
         }
         Insert: {
           created_at?: string
+          email: string
           id?: string
           message: string
-          read?: boolean
-          title: string
-          type: string
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          message?: string
-          read?: boolean
-          title?: string
-          type?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "notifications_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "user_profiles"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      payment_details: {
-        Row: {
-          created_at: string | null
-          details: Json
-          id: string
-          is_active: boolean | null
-          method: string
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          details: Json
-          id?: string
-          is_active?: boolean | null
-          method: string
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          details?: Json
-          id?: string
-          is_active?: boolean | null
-          method?: string
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
-      plans: {
-        Row: {
-          created_at: string | null
-          duration_hours: number
-          id: string
-          max_amount: number
-          min_amount: number
           name: string
-          roi_percent: number
-        }
-        Insert: {
-          created_at?: string | null
-          duration_hours: number
-          id?: string
-          max_amount: number
-          min_amount: number
-          name: string
-          roi_percent: number
+          status?: string | null
+          subject?: string | null
         }
         Update: {
-          created_at?: string | null
-          duration_hours?: number
-          id?: string
-          max_amount?: number
-          min_amount?: number
-          name?: string
-          roi_percent?: number
-        }
-        Relationships: []
-      }
-      transactions: {
-        Row: {
-          amount: number
-          created_at: string | null
-          id: string
-          type: string
-          user_id: string
-        }
-        Insert: {
-          amount: number
-          created_at?: string | null
-          id?: string
-          type: string
-          user_id: string
-        }
-        Update: {
-          amount?: number
-          created_at?: string | null
-          id?: string
-          type?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "transactions_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "user_profiles"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      user_profiles: {
-        Row: {
-          balance: number | null
-          btc_wallet: string | null
-          created_at: string
-          email: string
-          full_name: string
-          id: string
-          is_admin: boolean | null
-          updated_at: string
-          usdt_wallet: string | null
-        }
-        Insert: {
-          balance?: number | null
-          btc_wallet?: string | null
-          created_at?: string
-          email: string
-          full_name: string
-          id: string
-          is_admin?: boolean | null
-          updated_at?: string
-          usdt_wallet?: string | null
-        }
-        Update: {
-          balance?: number | null
-          btc_wallet?: string | null
           created_at?: string
           email?: string
-          full_name?: string
           id?: string
-          is_admin?: boolean | null
-          updated_at?: string
-          usdt_wallet?: string | null
+          message?: string
+          name?: string
+          status?: string | null
+          subject?: string | null
         }
         Relationships: []
       }
-      withdrawals: {
+      profiles: {
         Row: {
-          admin_notes: string | null
-          amount: number
-          created_at: string | null
+          avatar_url: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
           id: string
-          method: string
-          processed_by: string | null
-          status: string | null
           updated_at: string
           user_id: string
-          wallet_address: string | null
         }
         Insert: {
-          admin_notes?: string | null
-          amount: number
-          created_at?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
           id?: string
-          method: string
-          processed_by?: string | null
-          status?: string | null
           updated_at?: string
           user_id: string
-          wallet_address?: string | null
         }
         Update: {
-          admin_notes?: string | null
-          amount?: number
-          created_at?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
           id?: string
-          method?: string
-          processed_by?: string | null
-          status?: string | null
           updated_at?: string
           user_id?: string
-          wallet_address?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "withdrawals_processed_by_fkey"
-            columns: ["processed_by"]
-            isOneToOne: false
-            referencedRelation: "user_profiles"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          created_at: string
+          description: string | null
+          featured: boolean | null
+          github_url: string | null
+          id: string
+          image_url: string | null
+          project_url: string | null
+          status: string | null
+          technologies: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          featured?: boolean | null
+          github_url?: string | null
+          id?: string
+          image_url?: string | null
+          project_url?: string | null
+          status?: string | null
+          technologies?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          featured?: boolean | null
+          github_url?: string | null
+          id?: string
+          image_url?: string | null
+          project_url?: string | null
+          status?: string | null
+          technologies?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          created_at: string
+          description: string | null
+          features: string[] | null
+          icon: string | null
+          id: string
+          price_range: string | null
+          status: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          icon?: string | null
+          id?: string
+          price_range?: string | null
+          status?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          icon?: string | null
+          id?: string
+          price_range?: string | null
+          status?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
       }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      is_current_user_admin: { Args: never; Returns: boolean }
-      process_completed_investments: { Args: never; Returns: undefined }
-      trigger_investment_processing: { Args: never; Returns: undefined }
+      get_current_user_role: {
+        Args: never
+        Returns: Database["public"]["Enums"]["app_role"]
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -548,6 +318,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
