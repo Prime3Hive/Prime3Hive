@@ -17,6 +17,18 @@ const Team = () => {
         twitter: "https://x.com/BiochemIbitz",
         github: "https://github.com/BiochemIbitz"
       }
+    },
+    {
+      name: "David Enabs",
+      role: "Lead Frontend Developer",
+      bio: "Frontend specialist crafting exceptional user experiences with modern web technologies.",
+      image: null, // Placeholder for headshot image
+      skills: ["React", "TypeScript", "UI/UX", "Frontend Architecture"],
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
     }
   ];
 
