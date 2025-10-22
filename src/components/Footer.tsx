@@ -1,4 +1,5 @@
 import { Github, Twitter, Linkedin, Mail, MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
   const socialLinks = [
@@ -80,12 +81,12 @@ export function Footer() {
               <ul className="space-y-2">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a 
-                      href={link.href} 
+                    <Link 
+                      to={link.href} 
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -99,12 +100,12 @@ export function Footer() {
             © 2024 PrimeHive Digital Solutions. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="/contact" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+            <Link to="/contact" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               Privacy Policy
-            </a>
-            <a href="/contact" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+            </Link>
+            <Link to="/contact" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
