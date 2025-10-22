@@ -97,7 +97,7 @@ const ContactSection = () => {
                     <MapPin className="w-6 h-6 text-primary mt-1" />
                     <div>
                       <p className="font-semibold">Location</p>
-                      <p className="text-muted-foreground">No 4 MTN Mast Works and Housing Estate Gwarinpa</p>
+                      <p className="text-muted-foreground">No 4 MTN Mast Works and Housing Estate Gwarinpa, Abuja Nigeria</p>
                     </div>
                   </div>
                 </div>
