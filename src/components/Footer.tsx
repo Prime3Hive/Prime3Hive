@@ -47,9 +47,11 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <span className="text-background font-bold text-sm">P</span>
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="PrimeHive Digital Solutions"
+                className="w-8 h-8 object-contain"
+              />
               <span className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 PrimeHive
               </span>
@@ -97,10 +99,10 @@ export function Footer() {
             © 2024 PrimeHive Digital Solutions. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+            <a href="/contact" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+            <a href="/contact" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               Terms of Service
             </a>
           </div>

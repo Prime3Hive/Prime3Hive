@@ -28,12 +28,10 @@ export function Navbar() {
     trackTouch: true,
   });
 
-  const handleNavClick = (sectionId: string, href?: string) => {
+  const handleNavClick = (sectionId: string) => {
     setIsOpen(false);
     
-    if (href && href.startsWith('/')) {
-      window.location.href = href;
-    } else if (sectionId) {
+    if (sectionId) {
       // If we're not on the home page, navigate to home first
       if (window.location.pathname !== '/') {
         window.location.href = `/#${sectionId}`;
@@ -56,43 +54,46 @@ export function Navbar() {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <img 
-              src="/lovable-uploads/ac704901-333a-4f62-98d4-62ea1c19621f.png" 
+              src="/logo.png" 
               alt="PrimeHive Digital Solutions"
               className="w-10 h-10 object-contain"
             />
             <span className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               PrimeHive
             </span>
-          </div>
+          </Link>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <motion.button 
-              onClick={() => handleNavClick('hero', '/')} 
-              className="text-foreground/80 hover:text-primary transition-colors relative"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Home
-            </motion.button>
-            <motion.button 
-              onClick={() => handleNavClick('', '/projects')} 
-              className="text-foreground/80 hover:text-primary transition-colors relative"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Projects
-            </motion.button>
-            <motion.button 
-              onClick={() => handleNavClick('', '/services')} 
-              className="text-foreground/80 hover:text-primary transition-colors relative"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Services
-            </motion.button>
+            <Link to="/">
+              <motion.div 
+                className="text-foreground/80 hover:text-primary transition-colors relative cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Home
+              </motion.div>
+            </Link>
+            <Link to="/projects">
+              <motion.div 
+                className="text-foreground/80 hover:text-primary transition-colors relative cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Projects
+              </motion.div>
+            </Link>
+            <Link to="/services">
+              <motion.div 
+                className="text-foreground/80 hover:text-primary transition-colors relative cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Services
+              </motion.div>
+            </Link>
             <motion.button 
               onClick={() => handleNavClick('about')} 
               className="text-foreground/80 hover:text-primary transition-colors relative"
@@ -101,14 +102,15 @@ export function Navbar() {
             >
               About
             </motion.button>
-            <motion.button 
-              onClick={() => handleNavClick('', '/contact')} 
-              className="text-foreground/80 hover:text-primary transition-colors relative"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Contact
-            </motion.button>
+            <Link to="/contact">
+              <motion.div 
+                className="text-foreground/80 hover:text-primary transition-colors relative cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact
+              </motion.div>
+            </Link>
           </div>
           
           {/* CTA Button */}
@@ -143,9 +145,9 @@ export function Navbar() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button 
                     className="bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all neon-glow"
-                    onClick={() => handleNavClick('', '/contact')}
+                    asChild
                   >
-                    Get Started
+                    <Link to="/contact">Get Started</Link>
                   </Button>
                 </motion.div>
               </div>
@@ -177,27 +179,30 @@ export function Navbar() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.1 }}
               >
-                <motion.button 
-                  onClick={() => handleNavClick('hero', '/')} 
-                  className="text-foreground/80 hover:text-primary transition-colors text-left"
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Home
-                </motion.button>
-                <motion.button 
-                  onClick={() => handleNavClick('', '/projects')} 
-                  className="text-foreground/80 hover:text-primary transition-colors text-left"
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Projects
-                </motion.button>
-                <motion.button 
-                  onClick={() => handleNavClick('', '/services')} 
-                  className="text-foreground/80 hover:text-primary transition-colors text-left"
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Services
-                </motion.button>
+                <Link to="/">
+                  <motion.div 
+                    className="text-foreground/80 hover:text-primary transition-colors text-left"
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Home
+                  </motion.div>
+                </Link>
+                <Link to="/projects">
+                  <motion.div 
+                    className="text-foreground/80 hover:text-primary transition-colors text-left"
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Projects
+                  </motion.div>
+                </Link>
+                <Link to="/services">
+                  <motion.div 
+                    className="text-foreground/80 hover:text-primary transition-colors text-left"
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Services
+                  </motion.div>
+                </Link>
                 <motion.button 
                   onClick={() => handleNavClick('about')} 
                   className="text-foreground/80 hover:text-primary transition-colors text-left"
@@ -205,13 +210,14 @@ export function Navbar() {
                 >
                   About
                 </motion.button>
-                <motion.button 
-                  onClick={() => handleNavClick('', '/contact')} 
-                  className="text-foreground/80 hover:text-primary transition-colors text-left"
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Contact
-                </motion.button>
+                <Link to="/contact">
+                  <motion.div 
+                    className="text-foreground/80 hover:text-primary transition-colors text-left"
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Contact
+                  </motion.div>
+                </Link>
 
                 {user ? (
                   <div className="space-y-2 pt-2 border-t border-border">
@@ -243,9 +249,9 @@ export function Navbar() {
                     <motion.div whileTap={{ scale: 0.95 }}>
                       <Button 
                         className="bg-gradient-to-r from-primary to-accent w-full"
-                        onClick={() => handleNavClick('', '/contact')}
+                        asChild
                       >
-                        Get Started
+                        <Link to="/contact">Get Started</Link>
                       </Button>
                     </motion.div>
                   </div>

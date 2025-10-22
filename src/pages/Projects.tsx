@@ -291,9 +291,9 @@ const Projects = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all">
-                  Start Your Project
-                </Button>
+                  <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all" asChild>
+                    <Link to="/contact">Start Your Project</Link>
+                  </Button>
               </motion.div>
             </motion.div>
           </AnimatedSection>
